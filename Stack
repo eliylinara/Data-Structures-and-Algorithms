@@ -1,0 +1,29 @@
+package sorting_algorithms;
+import java.util.Stack;
+
+public class Stack1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Stack<String> stack= new Stack <String>();
+		
+		stack.push("mango");
+		stack.push("pine apple");
+		stack.push("grapes");
+		stack.push("strawberry");
+		stack.push("apple");
+		stack.push("banana");
+		
+		//String MyFavFruit=stack.pop(); //popMethod
+		
+		//System.out.println(stack.peek()); //peekMethod
+		
+		//System.out.println(stack.search("grapes"));
+		//System.out.println(stack.empty());
+
+		//System.out.println(stack ); 
+		//System.out.println(MyFavFruit);
+	}
+
+}
