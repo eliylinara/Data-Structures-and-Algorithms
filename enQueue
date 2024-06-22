@@ -1,0 +1,37 @@
+package sorting_algorithms;
+public class Queues {
+	
+	int queue[]= new int[5];
+	int size;
+	int front;
+	int rear;
+	
+	public void enQueue(int data) {
+		queue[rear]=data;
+		rear=rear++;
+		size=size++;
+	}
+	
+	public void show() {
+		
+		System.out.print("Elements: ");
+		
+		for (int i=0;i<size;i++) {
+			System.out.print(queue[i]+" ");
+			
+		}
+	}
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Queues q=new Queues();
+		q.enQueue(3);
+		q.enQueue(10);
+		
+		q.show();
+
+	}
+
+
+}
