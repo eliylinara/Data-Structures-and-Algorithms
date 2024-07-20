@@ -1,0 +1,76 @@
+package sorting_algorithms;
+
+
+public class deQueue {
+    
+    int deque[] = new int[10];
+    int size;
+    int front;
+    int rear;
+    
+    public void enQueueFront(int data) {
+        if (size == deque.length) {
+            System.out.println("Deque is full");
+            return;
+        }
+        front = (front - 1 + deque.length) % deque.length;
+        deque[front] = data;
+        size++;
+    }
+    
+    public void enQueueRear(int data) {
+        if (size == deque.length) {
+            System.out.println("Deque is full");
+            return;
+        }
+        deque[rear] = data;
+        rear = (rear + 1) % deque.length;
+        size++;
+    }
+    
+    public int deQueueFront() {
+        if (size == 0) {
+            System.out.println("Deque is empty");
+            return -1;
+        }
+        int data = deque[front];
+        front = (front + 1) % deque.length;
+        size--;
+        return data;
+    }
+    
+    public int deQueueRear() {
+        if (size == 0) {
+            System.out.println("Deque is empty");
+            return -1;
+        }
+        rear = (rear - 1 + deque.length) % deque.length;
+        int data = deque[rear];
+        size--;
+        return data;
+    }
+    
+    public void show() {
+        System.out.print("Elements: ");
+        for (int i = 0; i < size; i++) {
+            System.out.print(deque[(front + i) % deque.length] + " ");
+        }
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        deQueue dq = new deQueue();
+        dq.enQueueRear(3);
+        dq.enQueueRear(10);
+        dq.enQueueFront(2);
+        dq.enQueueFront(1);
+        
+        dq.show(); // Should display: 1 2 3 10
+        
+        dq.deQueueFront();
+        dq.show(); // Should display: 2 3 10
+        
+        dq.deQueueRear();
+        dq.show(); // Should display: 2 3
+    }
+}
