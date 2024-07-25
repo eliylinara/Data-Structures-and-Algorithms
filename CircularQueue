@@ -1,0 +1,83 @@
+package sorting_algorithms;
+
+public class CircularQueue {
+    private int[] queue;
+    private int front, rear, size, capacity;
+
+    // Constructor to initialize the circular queue
+    public CircularQueue(int capacity) {
+        this.capacity = capacity;
+        this.queue = new int[capacity];
+        this.front = this.size = 0;
+        this.rear = capacity - 1;
+    }
+
+    // Method to check if the queue is full
+    public boolean isFull() {
+        return (this.size == this.capacity);
+    }
+
+    // Method to check if the queue is empty
+    public boolean isEmpty() {
+        return (this.size == 0);
+    }
+
+    // Method to add an item to the queue
+    public void enqueue(int item) {
+        if (isFull()) {
+            System.out.println("Queue is full");
+            return;
+        }
+        this.rear = (this.rear + 1) % this.capacity;
+        this.queue[this.rear] = item;
+        this.size++;
+        System.out.println(item + " enqueued to queue");
+    }
+
+    // Method to remove an item from the queue
+    public int dequeue() {
+        if (isEmpty()) {
+            System.out.println("Queue is empty");
+            return Integer.MIN_VALUE;
+        }
+        int item = this.queue[this.front];
+        this.front = (this.front + 1) % this.capacity;
+        this.size--;
+        return item;
+    }
+
+    // Method to get the front item of the queue
+    public int front() {
+        if (isEmpty()) {
+            return Integer.MIN_VALUE;
+        }
+        return this.queue[this.front];
+    }
+
+    // Method to get the rear item of the queue
+    public int rear() {
+        if (isFull()) {
+            return Integer.MIN_VALUE;
+        }
+        return this.queue[this.rear];
+    }
+
+    // Main method to test the CircularQueue
+    public static void main(String[] args) {
+        CircularQueue queue = new CircularQueue(5);
+
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+        queue.enqueue(40);
+
+        System.out.println("Dequeued item: " + queue.dequeue());
+        System.out.println("Front item: " + queue.front());
+        System.out.println("Rear item: " + queue.rear());
+
+        queue.enqueue(50);
+        queue.enqueue(60);
+        queue.enqueue(70); // This will show "Queue is full" as the capacity is 5
+    }
+}
+
