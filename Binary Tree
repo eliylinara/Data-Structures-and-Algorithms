@@ -1,0 +1,103 @@
+package sorting_algorithms;
+
+public class Binarytree {
+	
+  class Node {
+	    int data;
+	    Node left, right;
+
+	    public Node(int item) {
+	        data = item;
+	        left = right = null;
+	    }
+	}
+
+	
+	class BinaryTree {
+	    // Root node of the binary tree
+	    Node root;
+
+	    // Constructor
+	    BinaryTree() {
+	        root = null;
+	    }
+
+	    // Insert a new node with the given data
+	    void insert(int data) {
+	        root = insertRec(root, data);
+	    }
+
+	    // Recursive method to insert a new node in the binary tree
+	    Node insertRec(Node root, int data) {
+	        // If the tree is empty, return a new node
+	        if (root == null) {
+	            root = new Node(data);
+	            return root;
+	        }
+
+	        // Otherwise, recur down the tree
+	        if (data < root.data)
+	            root.left = insertRec(root.left, data);
+	        else if (data > root.data)
+	            root.right = insertRec(root.right, data);
+
+	        // Return the unchanged node pointer
+	        return root;
+	    }
+
+	    // In-order traversal: Left -> Root -> Right
+	    void inorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        inorderTraversal(node.left);
+	        System.out.print(node.data + " ");
+	        inorderTraversal(node.right);
+	    }
+
+	    // Pre-order traversal: Root -> Left -> Right
+	    void preorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        System.out.print(node.data + " ");
+	        preorderTraversal(node.left);
+	        preorderTraversal(node.right);
+	    }
+
+	    // Post-order traversal: Left -> Right -> Root
+	    void postorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        postorderTraversal(node.left);
+	        postorderTraversal(node.right);
+	        System.out.print(node.data + " ");
+	    }
+
+	    // Driver method to test the binary tree
+	    public static void main(String[] args) {
+	        BinaryTree tree = new BinaryTree();
+
+	        
+	        tree.insert(50);
+	        tree.insert(30);
+	        tree.insert(20);
+	        tree.insert(40);
+	        tree.insert(70);
+	        tree.insert(60);
+	        tree.insert(80);
+
+	        System.out.println("In-order traversal:");
+	        tree.inorderTraversal(tree.root);
+
+	        System.out.println("\nPre-order traversal:");
+	        tree.preorderTraversal(tree.root);
+
+	        System.out.println("\nPost-order traversal:");
+	        tree.postorderTraversal(tree.root);
+	    }
+	}
+
+
+}
