@@ -1,0 +1,79 @@
+package sorting_algorithms;
+
+public class TreesAndTraversal {
+
+	// A class to represent the nodes of the binary tree
+	class Node {
+	    int data;
+	    Node left, right;
+
+	    public Node(int item) {
+	        data = item;
+	        left = right = null;
+	    }
+	}
+
+	// A class to represent the binary tree and its traversals
+	class BinaryTree {
+	    // Root node of the binary tree
+	    Node root;
+
+	    // Constructor
+	    BinaryTree() {
+	        root = null;
+	    }
+
+	    // In-order traversal: Left -> Root -> Right
+	    void inorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        inorderTraversal(node.left);
+	        System.out.print(node.data + " ");
+	        inorderTraversal(node.right);
+	    }
+
+	    // Pre-order traversal: Root -> Left -> Right
+	    void preorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        System.out.print(node.data + " ");
+	        preorderTraversal(node.left);
+	        preorderTraversal(node.right);
+	    }
+
+	    // Post-order traversal: Left -> Right -> Root
+	    void postorderTraversal(Node node) {
+	        if (node == null)
+	            return;
+
+	        postorderTraversal(node.left);
+	        postorderTraversal(node.right);
+	        System.out.print(node.data + " ");
+	    }
+
+	    // Driver method to test the traversal methods
+	    public static void main(String[] args) {
+	        BinaryTree tree = new BinaryTree();
+
+	        tree.root = new Node(1);
+	        tree.root.left = new Node(2);
+	        tree.root.right = new Node(3);
+	        tree.root.left.left = new Node(4);
+	        tree.root.left.right = new Node(5);
+
+	        System.out.println("Inorder traversal:");
+	        tree.inorderTraversal(tree.root);
+
+	        System.out.println("\nPreorder traversal:");
+	        tree.preorderTraversal(tree.root);
+
+	        System.out.println("\nPostorder traversal:");
+	        tree.postorderTraversal(tree.root);
+	    }
+	}
+
+	}
+
+
